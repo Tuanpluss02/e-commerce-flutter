@@ -107,7 +107,7 @@ class ItemBuilder extends StatelessWidget {
               decoration: BoxDecoration(
                   color: products.color,
                   borderRadius: const BorderRadius.all(Radius.circular(30))),
-              child: Image.asset(products.image),
+              child: Hero(tag: products.id, child: Image.asset(products.image)),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 14),
