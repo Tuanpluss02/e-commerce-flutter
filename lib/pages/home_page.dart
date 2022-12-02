@@ -5,11 +5,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../product_sample.dart';
 
+late Size size;
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: buildAppBar(),
@@ -102,8 +105,8 @@ class ItemBuilder extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.all(defaultPadding),
-              width: 230,
-              height: 250,
+              width: size.width * 0.4,
+              height: size.height * 0.2,
               decoration: BoxDecoration(
                   color: products.color,
                   borderRadius: const BorderRadius.all(Radius.circular(30))),
@@ -149,7 +152,7 @@ class _CategoriesState extends State<Categories> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: defaultPadding),
       child: SizedBox(
-        height: 25,
+        height: size.height * 0.1,
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: categories.length,
@@ -176,7 +179,7 @@ class _CategoriesState extends State<Categories> {
                     color: selectedIndex == index ? textColor : textLightColor),
               ),
               Container(
-                width: 30,
+                width: size.width * 0.1,
                 height: 2,
                 color: selectedIndex == index ? textColor : Colors.transparent,
               )

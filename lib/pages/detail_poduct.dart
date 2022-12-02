@@ -65,7 +65,7 @@ class BodyDetail extends StatelessWidget {
             children: [
               Container(
                 margin: EdgeInsets.only(top: size.height * 0.4),
-                padding: EdgeInsets.only(top: size.height * 0.12),
+                padding: EdgeInsets.only(top: size.height * 0.08),
                 height: size.height * 0.6,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(30)),
@@ -124,7 +124,7 @@ class BodyDetail extends StatelessWidget {
                       ],
                     ),
                     Container(
-                      height: size.height * 0.18,
+                      height: size.height * 0.15,
                       padding: const EdgeInsets.only(top: defaultPadding),
                       child: AutoSizeText(
                         product.description,
@@ -138,8 +138,8 @@ class BodyDetail extends StatelessWidget {
                     Row(
                       children: [
                         Container(
-                          width: 70,
-                          height: 70,
+                          width: size.width * 0.15,
+                          height: size.height * 0.08,
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             border: Border.all(width: 1.5, color: textColor),
@@ -163,7 +163,7 @@ class BodyDetail extends StatelessWidget {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(20)),
                             ),
-                            height: 70,
+                            height: size.height * 0.08,
                             // width: size.width * 0.7,
                             child: InkWell(
                               onTap: () {},
@@ -197,28 +197,31 @@ class BodyDetail extends StatelessWidget {
                     SizedBox(
                       height: size.height * 0.1,
                     ),
-                    Row(
-                      children: [
-                        RichText(
-                            text: TextSpan(children: [
-                          const TextSpan(text: 'Price\n'),
-                          TextSpan(
-                              text: '\$${product.price}',
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 30))
-                        ])),
-                        const SizedBox(
-                          width: 45,
-                        ),
-                        Expanded(
-                            child: Hero(
-                          tag: product.id,
-                          child: Image.asset(
-                            product.image,
-                            fit: BoxFit.fill,
+                    SizedBox(
+                      height: size.height * 0.3,
+                      child: Row(
+                        children: [
+                          RichText(
+                              text: TextSpan(children: [
+                            const TextSpan(text: 'Price\n'),
+                            TextSpan(
+                                text: '\$${product.price}',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 30))
+                          ])),
+                          SizedBox(
+                            width: size.width * 0.1,
                           ),
-                        ))
-                      ],
+                          Expanded(
+                              child: Hero(
+                            tag: product.id,
+                            child: Image.asset(
+                              product.image,
+                              fit: BoxFit.contain,
+                            ),
+                          ))
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -298,10 +301,11 @@ class OutlineButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
         padding: const EdgeInsets.all(1.5),
-        width: 50,
-        height: 40,
+        width: size.width * 0.13,
+        height: size.height * 0.05,
         decoration: BoxDecoration(
           border: Border.all(width: 1.5, color: textColor),
           borderRadius: const BorderRadius.all(Radius.circular(30)),
@@ -322,12 +326,13 @@ class ItemSelect extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
         margin: const EdgeInsets.only(
             top: defaultPadding / 4, right: defaultPadding / 2),
         padding: const EdgeInsets.all(2.5),
-        width: 24,
-        height: 24,
+        width: size.width * 0.05,
+        height: size.height * 0.05,
         decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(
